@@ -1,19 +1,56 @@
 import React from 'react'
 import { NextPage } from "next/types"
+import { Slider } from 'components/organisms/slider'
+import { Hero } from 'components/organisms/hero'
+import { Home as Template } from 'components/templates'
+import { observer } from 'lib/fn/observers'
+import { motion } from 'framer-motion'
 
-export default function Home<NextPage>() {
 
-    return <main>
-        Hello?? words go here
-    </main>
+export default function Home<NextPage>( { data }: any ) {
+
+    //  let test = async () => {
+    //      await fetch('https://api.github.com/users/sterling-holt')
+    //      .then((res) => res.json())
+    //      .then((res) => console.log(res))
+    //  }
+
+
+
+    
+    //  --------------------
+    return <>
+        <section style={{
+            display: 'flex',
+            justifyContent: 'center',
+        }}>
+            <Avatar />
+        </section>
+    </>
 }
 
+
+//  ------------------------
 async function getStaticProps() {
 
-    const res = await fetch('')
-    const posts = await res.json()
+    let data = await fetch('https://api.github.com/users/sterling-holt')
+        .then((res) => res.json())
+    //  --------------------
 
-    //  ----
+    return { props: { data }}
+}
 
-    return { props: { posts }}
+
+
+
+
+const Avatar = () => {
+    const _ref = React.useRef<any>()
+    let isIntersecting = observer.intersection(_ref)
+
+
+    return <div 
+        ref={_ref} 
+        style={{ '--avatar-image': 'https://avatars.githubusercontent.com/u/2521652?v=4' }}>
+    </div>
 }

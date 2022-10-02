@@ -1,0 +1,32 @@
+
+.component {
+    --pos-x: ;
+    --pox-y: ;
+
+
+    --bg: pink;
+    //  --------------------
+
+
+    isolation: isolate;
+    position: relative;
+
+
+    background: var(--bg);
+    width: fit-content;
+    padding: 1rem;
+
+    overflow: hidden;
+
+
+    color: dark;
+    @media (prefers-color-scheme: dark) {
+        color: white;
+    }
+
+    &:hover {
+        //  background: purple;
+        background: blue;
+        color: green;
+    }
+}

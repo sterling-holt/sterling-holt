@@ -1,0 +1,24 @@
+.component {
+//  position element
+//  ------------
+
+//  dimensions
+//  ------------
+    min-height: 10rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .container {
+        padding: 1rem;
+        width: 100vw;
+        //@at-root: pink;
+    }
+
+    @media screen and (min-width: 2400px) {
+        background: pink;
+        max-width: 50vw;
+    }
+}

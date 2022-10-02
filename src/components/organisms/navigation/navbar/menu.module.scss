@@ -1,0 +1,38 @@
+.component {
+
+    display: block;
+    background: skyblue;
+    
+    
+    & > * {
+        color: white;
+    }
+    
+
+
+
+
+
+    .button {
+        background: green;
+    }
+
+
+    .icon {
+        width: 1rem;
+        font-size: 2rem;
+        background: blue;
+
+        grid-area: menu;
+
+        z-index: 9998;
+
+    }
+
+}
+
+.testing {
+    isolation: isolate;
+    background: blue;
+    top: 4rem;
+}

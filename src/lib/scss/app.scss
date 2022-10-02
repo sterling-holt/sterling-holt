@@ -1,0 +1,27 @@
+
+//  @import url('./theme/colors.scss');
+//  @import 'gerillass';
+//  ----------------
+
+
+
+:root {
+    
+    --bg:   #00000099;
+    background: var(--bg);
+    color: white;
+
+    //  @include font-size(1rem);
+    font-size: responsive(16px);
+    //  font-size: clamp(var(--font-size), var(--font-size-scaler) + 1ch, var(--font-size-max));
+}
+
+@function responsive($baseline) {
+    //  ------------
+    //  @for $_ from 1 through $baseline
+    
+    $result: clamp($baseline, calc(100vw * 1.45ch), 18rem);
+    @return $result
+
+    //  ------------
+}
