@@ -14,8 +14,7 @@ export const Component = (props: {
 
 
     if (typeof window !== 'undefined') {
-        React.useEffect(() => {
-        }, [window.innerWidth])
+        console.log('navbar does something only on client in this block')
     }
     
     return <nav className={`${style.component}`}>
