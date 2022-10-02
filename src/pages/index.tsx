@@ -1,8 +1,5 @@
 import React from 'react'
 import { NextPage } from "next/types"
-import { Slider } from 'components/organisms/slider'
-import { Hero } from 'components/organisms/hero'
-import { Home as Template } from 'components/templates'
 import { observer } from 'lib/fn/observers'
 import { motion } from 'framer-motion'
 
