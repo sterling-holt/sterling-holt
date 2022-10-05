@@ -1,0 +1,97 @@
+
+//  ->  footer styles
+//  --------------------------------------------
+.footer {
+	//	create new stacking context
+	//  ----------------------------------------
+	isolation: 								isolate;
+	scroll-snap-align: 						end;
+	
+	//	stack positioning
+	//  ----------------------------------------
+	//	pointer-events: 						auto;
+    position: 								relative;
+    inset: 									0;
+	
+	//	grid
+	//  ----------------------------------------
+	display:								grid;
+	grid-template-columns:					0 auto 1fr 0;
+	grid-template-areas:					". brand links.";
+	gap:									1rem;
+	
+
+	//	dimensions
+	//  ----------------------------------------
+    min-height: 							12.5rem;	//	this value should be responsive
+	width: 									stretch;
+	max-width:								1200px;		//	this value should be responsive
+	//		min-width:						0;
+    
+	//	spacing
+	//  ----------------------------------------
+	padding: 								1rem 0;
+
+
+
+    
+    background: 							#00000005 !important;
+    @media (prefers-color-scheme: dark) {
+        background: 						darkslategray !important;
+    }
+
+	& > * {
+		opacity: var(--content-opacity, 1);
+	}
+
+
+	.brand {
+		position: sticky;
+
+		grid-area: brand;
+		border-right: 2px dashed #ffffff30;
+		
+		padding-right: 1rem;
+	}
+
+
+
+
+
+
+	.links {
+		grid-area: links;
+
+		display: flex;
+		justify-content: flex-start;
+		
+		ul {
+			width: fit-content;
+			line-height: 2rem;
+
+			li > a {
+				background: pink;
+				color: #ffffff50;
+				//	: unset;
+
+
+				&:hover {
+					//	all: unset;
+					color: var(--brand-color, lime);
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+.column {
+	background: red;
+
+
+}

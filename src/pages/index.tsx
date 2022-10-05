@@ -1,53 +1,71 @@
 import React from 'react'
 import { NextPage } from "next/types"
-import { observer } from 'lib/fn/observers'
-import { motion } from 'framer-motion'
+import { GetStaticProps } from 'next'
+import { Avatar } from 'components/avatar'
+import { Octokit } from 'octokit'
+import { Section } from 'components/organisms/hero'
 
 
-export default function Home<NextPage>( { data }: any ) {
+export default function Home<NextPage>( props: { testmessage: any } ) {
 
     //  let test = async () => {
     //      await fetch('https://api.github.com/users/sterling-holt')
     //      .then((res) => res.json())
     //      .then((res) => console.log(res))
     //  }
+    //  console.log('meow: ', props.testmessage)
+    React.useEffect(() => {}, [])
 
-
-
-    
     //  --------------------
+    
+
+
+
     return <>
-        <section style={{
-            display: 'flex',
-            justifyContent: 'center',
-        }}>
+        <Section 
+            style={(`
+                height:             100px,
+                background:         blue,
+                color:              pink,
+            `)}
+        >   
+
+
+            <p>Hey! I'm</p>
+            <h1>Sterling</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fermentum vel metus vitae facilisis. In ac diam massa. Nullam fringilla,</p>
             <Avatar />
+        </Section>
+
+
+
+        <section>
+            My Projects go here!
         </section>
+        <div>and here</div>
     </>
 }
 
 
 //  ------------------------
-async function getStaticProps() {
 
-    let data = await fetch('https://api.github.com/users/sterling-holt')
-        .then((res) => res.json())
+export const getStaticProps: GetStaticProps = async (context) => {
+    //await fetch('https://api.github.com/users/sterling-holt')
+    //.then((res) => res.json())
+
+
+    
+    const octokit = new Octokit({
+        auth: process.env.GITHUB_TOKEN
+    })
+
+
+
+    //  let data = await fetch('https://fakestoreapi.com/products/1', {
+    //      headers: { Authentication: };
+    //  })
+    //      .then(res => res.json())
     //  --------------------
 
-    return { props: { data }}
-}
-
-
-
-
-
-const Avatar = () => {
-    const _ref = React.useRef<any>()
-    let isIntersecting = observer.intersection(_ref)
-
-
-    return <div 
-        ref={_ref} 
-        style={{ '--avatar-image': 'https://avatars.githubusercontent.com/u/2521652?v=4' }}>
-    </div>
+    return { props: { testmessage: 'poop' }}
 }

@@ -1,0 +1,143 @@
+
+//  @import 'gerillass';
+
+
+
+
+
+@keyframes fadeIn {
+    from {  opacity:                        0; }
+    to {    opacity:                        1; }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-1rem);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(2.1ch);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+//  ----------------------------------------------------
+
+.navbar {
+
+//  create new stacking context with a fixed position
+//  ------------
+    //  isolation:                              isolate;
+    position:                               sticky;
+    inset:                                  0;
+    //top: -5rem;
+    //  transform:                              translateY(-6rem);
+
+//  size
+//  ------------
+    height:                                 fit-content;
+    width:                                  stretch;
+
+//  ------------
+
+//  flexbox
+//  ------------
+    display:                                flex;
+    flex-direction:                         row;
+    justify-content:                        space-between;
+    align-items:                            center;
+//  ------------
+
+//  margins, paddings
+//  ------------
+    //  margin:                                 0;
+    padding:                                1.25rem;
+    z-index:                                100;
+//  ------------
+    
+
+//  font-size: 1.45ch;
+    background:                             var(--bg-color2, transparent);
+    backdrop-filter:                        blur(4rem) brightness(30%) contrast(90%) saturate(60%);
+
+    .wrapper {
+        
+        display: flex;
+        align-items: center;
+        
+        ul {
+            counter-reset:                  navbar-links;
+            display:                        flex;
+            gap:                            1rem;
+    
+            li {
+                --link-delay:               calc(0.5s * var(--index, 0));
+                --opacity:                  1;
+                opacity:                    var(--opacity);
+
+                transition:                 opacity 3s;
+                //  transition-delay: var(--link-delay);
+
+                :disabled {
+                    --opacity:                          0;
+                }
+                
+
+
+                a {
+                    padding:                            0.25rem;
+                    height:                             100%;
+
+                    --nav-counter-transform:            translateX(-2.1ch);
+                    --nav-counter-opacity:              0;
+
+                    transition:                         color 1s;
+
+                    &:hover {
+                        --nav-counter-transform:        translateX(0ch);
+                        --nav-counter-opacity:          0.4;
+
+                        color:                          var(--brand-color);
+                    }
+
+
+                    &::before {
+                        counter-increment:              navbar-links;
+                        font-size:                      0.8rem;
+                        color:                          white;
+                        opacity:                        0.5;
+                        mix-blend-mode:                 soft-light;
+                        content:                        '›';
+                        line-height: 0rem;
+                        padding:                        0 0.4rem;
+                        
+
+                        transform:                      var(--nav-counter-transform);
+                        opacity:                        var(--nav-counter-opacity);
+                        
+
+                        display:                        inline-block;
+                        
+                        transition:                     transform 0.5s 0s ease-out,
+                                                        opacity 0.5s ease-in-out;
+                    }
+    
+                }
+                //  &:last-child {
+                //      counter-reset:          navbar-links;
+                //  }
+            }
+        }
+    }
+}

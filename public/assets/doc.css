@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --gradient: linear-gradient(to right, #EE0000, #B42EDE, #336CCD, #0EC6DC);
+    --font-size: 16px;
+    --font-size-scaler: 0.5vw;
+    --font-size-max: 32px;
+    
+    --pixel-density: 1;
+
+
+
+    
+    
+    
+    
+    
+    font-family: 'Red Hat Display', sans-serif;
+    
+    line-height: 1.5rem;
+
+
+
+    --bg-color: white;
+    background: var(--bg-color, white);
+    color: var(--text-color, black);
+}
+@media(prefers-color-scheme: dark) {
+    :root {
+        --bg-color: black;
+        --text-color: white;
+    }
+}
+
+
+
+:root > body > #__next {
+    background: red;
+}
+
+
+
+/*
+
+.shell {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+
+
+    main {
+
+        background: green;
+        min-height: 200vh;
+
+
+
+
+        display: grid;
+
+
+        width: stretch;
+    }
+
+    & > * > .container {
+        max-width: clamp(80rem, calc(80vw + 1rem), 120rem);
+
+
+        &::before {
+            content: '';
+            display: block;
+            inset: 0;
+            outline: 4px solid red;
+        }
+    }
+}
+*/

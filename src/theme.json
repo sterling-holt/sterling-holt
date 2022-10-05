@@ -1,0 +1,25 @@
+{
+    "breakpoints": {
+        "xs": "",
+        "sm": "",
+        "md": "",
+        "lg": "",
+        "xl": "",
+        "2k": "",
+        "4k": ""
+    },
+    "font": {
+        "family":   {
+            "name": "",
+            "link": "",
+        },
+        "base":     "16px"
+    },
+    "colors": [
+
+    ],
+    "spacing": [
+
+    ]
+
+}
