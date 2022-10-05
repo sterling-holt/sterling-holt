@@ -5,10 +5,10 @@ export const Section = (props: {
     style?: any
 }) => {
 
+    useSCSS(props.style)
 
 
-    convertJSS(props.style)
-
+    
 
     return <section
         className=""
@@ -26,7 +26,7 @@ export const Section = (props: {
 
 
 
-function convertJSS(style: { }) {
+function useSCSS(style: { }) {
 
     let payload: Array<any>
 
