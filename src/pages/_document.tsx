@@ -6,7 +6,10 @@ export default function Document() {
 
     return <Html lang="en">
         <Head>
-            <link href="/assets/doc.css" rel="stylesheet" />
+
+            <style>
+                
+            </style>
         </Head>
         
         <body>
