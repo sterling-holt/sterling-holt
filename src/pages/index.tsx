@@ -30,11 +30,10 @@ export default function Home<NextPage>({ data, repos }: any ) {
         </section>
 
         <section className={_projects.projects}>
-            <h1 id="projects">Projects</h1>
+            <h1 id="projects">Projects:</h1>
 
             <div className={_projects.track}>
                 {repos.map((i: any) => {
-
 
                     if (i.name !== data.login) {
                         return <div key={i.name}
