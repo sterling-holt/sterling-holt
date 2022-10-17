@@ -1,0 +1,72 @@
+.intro {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    max-width: 780px;
+
+    padding: 1rem;
+
+    transform: translate(0, -4rem);
+
+
+
+
+    .text {
+        display: flex;
+        flex-direction: column;
+
+        max-width: 75%;
+
+
+        p, h1 {
+            width: fit-content;
+            height: fit-content;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-size: 2.0rem;
+            font-weight: 900;
+
+            line-height: 3rem;
+            letter-spacing: 0.05ch;
+        }
+        
+        .bio {
+            font-size: 0.95rem;
+            line-height: 1.4rem;
+            opacity: 0.75;
+            letter-spacing: 0.05ch;
+            text-align: left;
+            //font-style: italic;
+
+
+            @media screen and (min-width: 740px) {
+                max-width: 55%;
+            }
+        }
+
+
+        button {
+            margin-top: 2rem;
+
+
+            background: var(--text);
+            color: var(--bg);
+            font-weight: bold;
+            
+
+
+            align-self: center;
+            border: 0;
+            border-radius: 0.25rem;
+            width: fit-content;
+            padding: 1rem 1.5rem;
+            opacity: 1;
+        }
+    }
+}
+

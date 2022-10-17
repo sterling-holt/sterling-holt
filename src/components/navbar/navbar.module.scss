@@ -1,0 +1,14 @@
+.nav {
+    background: var(--bg);
+    padding: 1rem;
+    position: sticky;
+    inset: 0;
+    width: stretch;
+
+
+
+    display: flex;
+    justify-content: space-between;
+
+    z-index: 1000;
+}

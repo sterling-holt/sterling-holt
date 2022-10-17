@@ -7,9 +7,11 @@ export default function Document() {
     return <Html lang="en">
         <Head>
 
-            <style>
-                
-            </style>
+            <style>{`
+                root: {
+                    background: blue;
+                }
+            `}</style>
         </Head>
         
         <body>

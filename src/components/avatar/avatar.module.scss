@@ -1,0 +1,16 @@
+.avatar {
+    //  --avatar-bg: url('https://avatars.githubusercontent.com/u/2521652?v=4');
+
+    //  background: var(--avatar-bg);
+    content: var(--src);
+    height: stretch;
+
+
+    border-radius: 100rem;
+    shape-outside: ellipse(130px 140px at 20% 20%);
+
+
+
+
+    transition: 0.25s ease-in-out;
+}

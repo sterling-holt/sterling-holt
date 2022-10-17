@@ -1,48 +1,35 @@
 import React from 'react'
 import { NextPage } from "next/types"
 import { GetStaticProps } from 'next'
-import { Avatar } from 'components/avatar'
 import { Octokit } from 'octokit'
-import { Section } from 'components/organisms/hero'
+import { Intro } from 'components/intro'
+import { Avatar } from 'components/avatar'
+
+import _intro from '../style/intro.module.scss'
+import _projects from '../style/projects.module.scss'
 
 
-export default function Home<NextPage>( props: { testmessage: any } ) {
-
-    //  let test = async () => {
-    //      await fetch('https://api.github.com/users/sterling-holt')
-    //      .then((res) => res.json())
-    //      .then((res) => console.log(res))
-    //  }
-    //  console.log('meow: ', props.testmessage)
-    React.useEffect(() => {}, [])
-
-    //  --------------------
+export default function Home<NextPage>({ data, repos }: any ) {
+    const [activeProject, setActiveProject] = React.useState<any>()
     
 
+    console.log(repos)
 
 
     return <>
-        <Section 
-            style={(`
-                height:             100px,
-                background:         blue,
-                color:              pink,
-            `)}
-        >   
+        <section className={_intro.intro}>
+            <div className={_intro.text}>
+                <p>{"Hey! I'm"}</p>
+                <h1>{data.name}</h1>
+                <p className={_intro.bio}>{data.bio}</p>
 
-
-            <p>Hey! I'm</p>
-            <h1>Sterling</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fermentum vel metus vitae facilisis. In ac diam massa. Nullam fringilla,</p>
-            <Avatar />
-        </Section>
-
-
-
-        <section>
-            My Projects go here!
+                <button onClick={() => {
+                    window.open('/resume.pdf')
+                }}>Resumé</button>
+            </div>
         </section>
-        <div>and here</div>
+
+    
     </>
 }
 
@@ -50,22 +37,68 @@ export default function Home<NextPage>( props: { testmessage: any } ) {
 //  ------------------------
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    //await fetch('https://api.github.com/users/sterling-holt')
-    //.then((res) => res.json())
 
 
-    
-    const octokit = new Octokit({
-        auth: process.env.GITHUB_TOKEN
-    })
+    async function _git(url: string) {
+        
+        const res = await fetch(url, {
+            method: "get",
+            mode: "cors",
+            headers: { 
+                authorization: `token ${process.env.GITHUB_TOKEN}`
+            }
+        })
+
+        return res.json()
+    }
 
 
 
-    //  let data = await fetch('https://fakestoreapi.com/products/1', {
-    //      headers: { Authentication: };
-    //  })
-    //      .then(res => res.json())
-    //  --------------------
 
-    return { props: { testmessage: 'poop' }}
+
+    const overview = await _git('https://api.github.com/users/sterling-holt')
+    const repos = await _git('https://api.github.com/users/sterling-holt/repos')
+
+    return {
+        props: { 
+            data: overview,
+            repos: repos
+        }
+    }
 }
+
+
+
+
+
+
+
+/*
+
+
+
+    <section className={_projects.projects}>
+            <h1 id="projects">Projects</h1>
+
+            <div className={_projects.track}>
+                {repos.map((i: any) => {
+
+
+                    if (i.name !== data.login) {
+                        return <div key={i.name}
+                            className={`${_projects.item} ${activeProject === i.name ? _projects.active : null }`}
+                            onClick={() => {
+                                setActiveProject(activeProject === i.name ? null : i.name)
+                            }}
+                        >
+                            {i.name}
+                            <span><a href={i.html_url}>Link</a></span>
+                        </div>
+                    }
+                })}
+            </div>
+        </section>
+
+
+
+*/

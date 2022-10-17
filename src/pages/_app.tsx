@@ -1,27 +1,40 @@
 //
 //	description of file
 //
-//	------------------------
+ //	----------------------------------------
 //	i.  imports
 import React, { MutableRefObject } from 'react'
 import type { AppProps } from 'next/app'
-//	------------------------
-//	import * as dotenv from 'dotenv'
-//	dotenv.config()
-//	------------------------
-//
+//	----------------------------------------
 //	ii.  stylesheets
-//	------------------------
-import 'the-new-css-reset'
-//	------------------------
-import { Shell } from 'lib/shell'
-//	------------------------
+//	----------------------------------------
+//	import 'the-new-css-reset'
+import '../style/global.scss'
+import { Navbar } from 'components/navbar'
+import { Footer } from 'components/footer'
+
+//	----------------------------------------
+import * as dotenv from 'dotenv'
 
 export default function App({ Component, pageProps }: AppProps) {
+	
+	
+	dotenv.config()
+	console.log(process.env)
 
-	//	--------------------
 
-  	return <Shell>
-		<Component {...pageProps} />
-	</Shell>
-}
+
+
+
+
+	//	------------------------------------
+	return <>
+		<Navbar/>
+		<main>
+			<Component {...pageProps} />
+		</main>
+		<Footer>
+			footer goes here dawg
+		</Footer>
+	</>
+}	//	------------------------------------
