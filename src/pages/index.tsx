@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
             method: "get",
             mode: "cors",
             headers: { 
-                authorization: `token ${process.env.GITHUB_AUTH}`
+                authorization: `token ${process.env.GH_AUTH}`
             }
         })
 
