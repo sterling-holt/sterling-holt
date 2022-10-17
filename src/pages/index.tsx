@@ -29,7 +29,27 @@ export default function Home<NextPage>({ data, repos }: any ) {
             </div>
         </section>
 
-    
+        <section className={_projects.projects}>
+            <h1 id="projects">Projects</h1>
+
+            <div className={_projects.track}>
+                {repos.map((i: any) => {
+
+
+                    if (i.name !== data.login) {
+                        return <div key={i.name}
+                            className={`${_projects.item} ${activeProject === i.name ? _projects.active : null }`}
+                            onClick={() => {
+                                setActiveProject(activeProject === i.name ? null : i.name)
+                            }}
+                        >
+                            {i.name}
+                            <span><a href={i.html_url}>Link</a></span>
+                        </div>
+                    }
+                })}
+            </div>
+        </section>
     </>
 }
 
@@ -66,39 +86,3 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }
     }
 }
-
-
-
-
-
-
-
-/*
-
-
-
-    <section className={_projects.projects}>
-            <h1 id="projects">Projects</h1>
-
-            <div className={_projects.track}>
-                {repos.map((i: any) => {
-
-
-                    if (i.name !== data.login) {
-                        return <div key={i.name}
-                            className={`${_projects.item} ${activeProject === i.name ? _projects.active : null }`}
-                            onClick={() => {
-                                setActiveProject(activeProject === i.name ? null : i.name)
-                            }}
-                        >
-                            {i.name}
-                            <span><a href={i.html_url}>Link</a></span>
-                        </div>
-                    }
-                })}
-            </div>
-        </section>
-
-
-
-*/

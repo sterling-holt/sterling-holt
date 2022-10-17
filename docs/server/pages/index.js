@@ -17,6 +17,20 @@ module.exports = {
 
 /***/ }),
 
+/***/ 569:
+/***/ ((module) => {
+
+// Exports
+module.exports = {
+	"projects": "projects_projects__IPw_x",
+	"track": "projects_track___aixr",
+	"item": "projects_item__EQ4di",
+	"active": "projects_active__NFrIE"
+};
+
+
+/***/ }),
+
 /***/ 441:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -32,37 +46,73 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _style_intro_module_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(398);
 /* harmony import */ var _style_intro_module_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_style_intro_module_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _style_projects_module_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(569);
+/* harmony import */ var _style_projects_module_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_style_projects_module_scss__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 function Home({ data , repos  }) {
     const [activeProject, setActiveProject] = react__WEBPACK_IMPORTED_MODULE_1___default().useState();
     console.log(repos);
-    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("section", {
-            className: (_style_intro_module_scss__WEBPACK_IMPORTED_MODULE_2___default().intro),
-            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                className: (_style_intro_module_scss__WEBPACK_IMPORTED_MODULE_2___default().text),
+    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("section", {
+                className: (_style_intro_module_scss__WEBPACK_IMPORTED_MODULE_2___default().intro),
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                    className: (_style_intro_module_scss__WEBPACK_IMPORTED_MODULE_2___default().text),
+                    children: [
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                            children: "Hey! I'm"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
+                            children: data.name
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                            className: (_style_intro_module_scss__WEBPACK_IMPORTED_MODULE_2___default().bio),
+                            children: data.bio
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
+                            onClick: ()=>{
+                                window.open("/resume.pdf");
+                            },
+                            children: "Resum\xe9"
+                        })
+                    ]
+                })
+            }),
+            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("section", {
+                className: (_style_projects_module_scss__WEBPACK_IMPORTED_MODULE_3___default().projects),
                 children: [
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                        children: "Hey! I'm"
-                    }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h1", {
-                        children: data.name
+                        id: "projects",
+                        children: "Projects"
                     }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                        className: (_style_intro_module_scss__WEBPACK_IMPORTED_MODULE_2___default().bio),
-                        children: data.bio
-                    }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("button", {
-                        onClick: ()=>{
-                            window.open("/resume.pdf");
-                        },
-                        children: "Resum\xe9"
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                        className: (_style_projects_module_scss__WEBPACK_IMPORTED_MODULE_3___default().track),
+                        children: repos.map((i)=>{
+                            if (i.name !== data.login) {
+                                return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    className: `${(_style_projects_module_scss__WEBPACK_IMPORTED_MODULE_3___default().item)} ${activeProject === i.name ? (_style_projects_module_scss__WEBPACK_IMPORTED_MODULE_3___default().active) : null}`,
+                                    onClick: ()=>{
+                                        setActiveProject(activeProject === i.name ? null : i.name);
+                                    },
+                                    children: [
+                                        i.name,
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
+                                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
+                                                href: i.html_url,
+                                                children: "Link"
+                                            })
+                                        })
+                                    ]
+                                }, i.name);
+                            }
+                        })
                     })
                 ]
             })
-        })
+        ]
     });
 }
 //  ------------------------
@@ -85,35 +135,7 @@ const getStaticProps = async (context)=>{
             repos: repos
         }
     };
-} /*
-
-
-
-    <section className={_projects.projects}>
-            <h1 id="projects">Projects</h1>
-
-            <div className={_projects.track}>
-                {repos.map((i: any) => {
-
-
-                    if (i.name !== data.login) {
-                        return <div key={i.name}
-                            className={`${_projects.item} ${activeProject === i.name ? _projects.active : null }`}
-                            onClick={() => {
-                                setActiveProject(activeProject === i.name ? null : i.name)
-                            }}
-                        >
-                            {i.name}
-                            <span><a href={i.html_url}>Link</a></span>
-                        </div>
-                    }
-                })}
-            </div>
-        </section>
-
-
-
-*/ ;
+};
 
 
 /***/ }),
