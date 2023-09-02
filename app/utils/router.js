@@ -4,7 +4,7 @@ export default async function Router(path) {
 
     
     if (path === '/') {
-        path = '/index'
+        path = '/page'
     } else {
 
         const segments = path.split('/').filter(Boolean)
@@ -12,10 +12,11 @@ export default async function Router(path) {
         segments.forEach((segment, index) => {
             if (Number.isNaN(Number(segment)) === false) {
                 segments[index] = '[id]'
+                console.log(segments[index])
             }
         })
-
-        importPath += `/${segments.join('/')}`
+        console.log(segments.join)
+        //  importPath += `/${segments.join('/')}page.js`
     }
 
     try {
