@@ -15,7 +15,7 @@ export default async function Router(path) {
             }
         })
 
-        importPath += `/${segments.join('/')}.js`
+        importPath += `/${segments.join('/')}`
     }
 
     try {
